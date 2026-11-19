@@ -2,7 +2,7 @@ pipeline {
   agent any
   tools {
     maven 'MAVEN_3_9'
-    jdk 'JDK_24'
+    jdk 'JDK_26'
   }
 	environment {
 		REGISTRY_USER = "wuu1x" // Cambia por tu usuario real de Docker Hub
@@ -49,7 +49,7 @@ pipeline {
         steps {
 			// 1. Enviar el código a analizar a SonarQube
             withSonarQubeEnv('MiSonarServer') {
-                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=retail-store-u202319949'
+                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=learning-center-platform-u202319949'
             }
 			// 2. Pausar el pipeline y esperar la respuesta del Webhook de SonarQube
 	        script {
